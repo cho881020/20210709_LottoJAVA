@@ -5,7 +5,51 @@ import java.util.Scanner;
 public class MainDrive {
 
 	public static void main(String[] args) {
+		
 
+//		컴퓨터가 6개의 랜덤 숫자를 뽑아서 => 이번주 당첨번호를 추첨.
+
+		int[] winLottoNumbers = new int[6];
+
+//		6개의 숫자를 넣기 위한 for
+
+		for (int i = 0; i < winLottoNumbers.length; i++) {
+
+//			중복검사 통과하는 숫자를 뽑을때까지 무한반복.
+
+			while (true) {
+				
+//			컴퓨터가 랜덤 숫자 제시 => 1~45 사이의 숫자를 랜덤으로 추출 : 범위검사는 필요가 없다.
+
+				int randomNum = (int) (Math.random() * 45 + 1);
+
+//			중복검사 만 해도 되겠다.
+				boolean isDuplOk = true;
+
+				for (int num : winLottoNumbers) {
+					if (num == randomNum) {
+						isDuplOk = false;
+						break;
+					}
+				}
+
+//			중복검사만 통과했어도 배열에 넣어도 된다.
+
+				if (isDuplOk) {
+					winLottoNumbers[i] = randomNum;
+					break;
+				}
+			}
+
+		}
+		
+		
+//		for (int num : winLottoNumbers) {
+//			System.out.println(num);
+//		}
+
+		
+		
 		int[] myLottoNumbers = new int[6];
 
 //		숫자 6개 => 내 로또 번호를 입력받기 위한 for문.
@@ -69,41 +113,6 @@ public class MainDrive {
 
 		}
 
-//		컴퓨터가 6개의 랜덤 숫자를 뽑아서 => 이번주 당첨번호를 추첨.
-
-		int[] winLottoNumbers = new int[6];
-
-//		6개의 숫자를 넣기 위한 for
-
-		for (int i = 0; i < winLottoNumbers.length; i++) {
-
-//			중복검사 통과하는 숫자를 뽑을때까지 무한반복.
-
-			while (true) {
-				
-//			컴퓨터가 랜덤 숫자 제시 => 1~45 사이의 숫자를 랜덤으로 추출 : 범위검사는 필요가 없다.
-
-				int randomNum = (int) (Math.random() * 45 + 1);
-
-//			중복검사 만 해도 되겠다.
-				boolean isDuplOk = true;
-
-				for (int num : winLottoNumbers) {
-					if (num == randomNum) {
-						isDuplOk = false;
-						break;
-					}
-				}
-
-//			중복검사만 통과했어도 배열에 넣어도 된다.
-
-				if (isDuplOk) {
-					winLottoNumbers[i] = randomNum;
-					break;
-				}
-			}
-
-		}
 		
 		
 //		등수 판단 => 내 번호 / 당첨번호 비교. => 몇개를 맞췄나 (같은 숫자가 몇개 있는가?)
